@@ -1,0 +1,35 @@
+<synthetic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.xebialabs.com/deployit/synthetic"
+           xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd">
+
+    <type type="nexus.PublishedArtifact" extends="xlrelease.ReleaseTrigger" description="** NEXUS 3.0 API ONLY-PROOF OF CONCEPT-NOT FINAL ** Triggers release when new version of artifact is published to Sonatype Nexus repository">
+        <!-- common -->
+        <property name="maven_groupId" required="true" description="Search parameter: maven.groupId"/>
+        <property name="maven_artifactId" required="true" description="Search parameter: maven.artifactId"/>
+        <property name="maven_baseVersion" default="LATEST" required="true" description="Search parameter: maven.baseVersion"/>
+
+        <!-- repository -->
+        <property name="server" category="Repository" referenced-type="nexus.Server" kind="ci" description="Sonatype Nexus server to poll"/>
+        <property name="repository" category="Repository" required="true" description="Search parameter: repository"/>
+        <property name="username" category="Repository" default="" required="false" description="Custom username to override global server configuration"/>
+        <property name="password" category="Repository" default="" required="false" password="true" description="Custom password to override global server configuration"/>
+
+        <!-- options -->
+        <property name="triggerOnInitialPublish" category="Options" kind="boolean" default="false" required="false" description="Should suppress error when artifact not found for the given GAV coordinates. Set this to true when artifact was never published to Nexus and you want to trigger a release on the initial publish. Default value is 'false'"/>
+
+        <!-- output variables -->
+        <property name="assetVersion" category="variables" required="false" description="Search result: version"/>
+        <property name="assetRepository" category="variables" required="false" description="Search result: assets/repository"/>
+        <property name="assetPath" category="variables" required="false" description="Search result: assets/path"/>
+        <property name="assetFormat" category="variables" required="false" description="Search result: assets/format"/>
+        <property name="assetDownloadUrl" category="variables" required="false" description="Search result: assets/downloadUrl"/>
+    </type>
+
+    <type type="nexus.Server" extends="configuration.HttpConnection">
+        <!-- ** v3 ONLY! ** Connection check will try to list repoisitories -->
+        <property name="checkConfigurationPath" hidden="true" default="/service/rest/v1/repositories"/>
+        <property name="checkConfigurationContentType" hidden="true" default="application/json"/>
+        <property name="scriptLocation" hidden="true" default="configuration/HttpConnectionCheck.py"/>
+    </type>
+
+</synthetic>

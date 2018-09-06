@@ -1,0 +1,14 @@
+
+dependencies {
+  compile 'org.apache.httpcomponents:httpclient'
+  compile 'org.apache.httpcomponents:httpcore'
+  compile 'org.apache.httpcomponents:httpmime'
+
+  testCompile 'junit:junit'
+  testCompile 'org.mockito:mockito-core'
+  testCompile 'org.assertj:assertj-core'
+  testCompile 'com.github.tomakehurst:wiremock'
+
+  testCompile project(path: ":core:xlr-server")
+  testCompile project(path: ":core:xlr-server-test-utils")
+}

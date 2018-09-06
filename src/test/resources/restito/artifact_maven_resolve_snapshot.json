@@ -1,0 +1,15 @@
+{
+    "data": {
+        "presentLocally": true,
+        "groupId": "org.apache.isis.core",
+        "artifactId": "runtime",
+        "version": "0.3.1-20121203.142748-1",
+        "baseVersion": "0.3.1-SNAPSHOT",
+        "extension": "jar",
+        "snapshot": true,
+        "snapshotBuildNumber": 1,
+        "snapshotTimeStamp": 1354544868000,
+        "sha1": "4107451f7bf136088db84c7891b0e3bce67f16f8",
+        "repositoryPath": "/org/apache/isis/core/runtime/0.3.1-SNAPSHOT/runtime-0.3.1-20121203.142748-1.jar"
+    }
+}
